@@ -2,12 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import BathroomHero from '../assets/bathroom hero.jpeg';
+import BathroomSection from '../assets/bathroom section.jpeg';
 
 const BathroomRenovation = () => {
     return (
         <div className="pt-20">
-            <div className="bg-blue-50 py-20 px-6">
-                <div className="container mx-auto max-w-4xl text-center">
+            <div
+                className="relative bg-blue-50 py-32 px-6 bg-cover bg-center"
+                style={{ backgroundImage: `linear-gradient(rgba(239,246,255,0.9), rgba(239,246,255,0.8)), url('${BathroomHero}')` }}
+            >
+                <div className="container mx-auto max-w-4xl text-center relative z-10">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -15,7 +20,7 @@ const BathroomRenovation = () => {
                     >
                         Bathroom Renovation
                     </motion.h1>
-                    <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                    <p className="text-xl text-neutral-600 mb-8 leading-relaxed font-medium">
                         Create a spa-like retreat in your own home. We combine luxury fixtures with efficient layouts to maximize your space.
                     </p>
                 </div>
@@ -37,8 +42,8 @@ const BathroomRenovation = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="bg-neutral-200 rounded-2xl h-80 w-full flex items-center justify-center text-neutral-500">
-                        Bathroom Image
+                    <div className="overflow-hidden rounded-2xl h-80 w-full shadow-lg">
+                        <img src={BathroomSection} alt="Luxury Bathroom" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     </div>
                 </div>
 

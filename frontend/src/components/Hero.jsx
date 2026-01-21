@@ -1,6 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
+// Import image with vite-imagetools directives
+import HeroImageSrcSet from '../assets/Homepage-hero.jpeg?w=500;800;1200;1600&format=webp&as=srcset';
+import HeroImageFallback from '../assets/Homepage-hero.jpeg?w=1200&format=jpg';
 
 const Hero = () => {
     return (
@@ -68,10 +71,15 @@ const Hero = () => {
                         className="relative"
                     >
                         <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl aspect-[4/5] md:aspect-square">
-                            {/* Placeholder until we use the image generation tool */}
-                            <div className="w-full h-full bg-neutral-200 flex items-center justify-center text-neutral-400">
-                                Hero Image Area
-                            </div>
+                            <img
+                                srcSet={HeroImageSrcSet}
+                                src={HeroImageFallback}
+                                alt="Modern Living Room Renovation"
+                                width="800"
+                                height="1000"
+                                className="w-full h-full object-cover"
+                                sizes="(max-width: 768px) 100vw, 50vw"
+                            />
                         </div>
 
                         {/* Floaty Card */}

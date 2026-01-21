@@ -2,12 +2,17 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import KitchenHero from '../assets/kitchen hero.jpeg';
+import KitchenSection from '../assets/kitchen section image.jpeg';
 
 const KitchenRemodeling = () => {
     return (
         <div className="pt-20">
-            <div className="bg-orange-50 py-20 px-6">
-                <div className="container mx-auto max-w-4xl text-center">
+            <div
+                className="relative bg-orange-50 py-32 px-6 bg-cover bg-center"
+                style={{ backgroundImage: `linear-gradient(rgba(255,247,237,0.9), rgba(255,247,237,0.8)), url('${KitchenHero}')` }}
+            >
+                <div className="container mx-auto max-w-4xl text-center relative z-10">
                     <motion.h1
                         initial={{ opacity: 0, y: -20 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -15,7 +20,7 @@ const KitchenRemodeling = () => {
                     >
                         Kitchen Remodeling
                     </motion.h1>
-                    <p className="text-xl text-neutral-600 mb-8 leading-relaxed">
+                    <p className="text-xl text-neutral-600 mb-8 leading-relaxed font-medium">
                         Transform your kitchen into the heart of your home. We specialize in custom designs, modern appliances, and functional layouts that suit your lifestyle.
                     </p>
                 </div>
@@ -37,8 +42,8 @@ const KitchenRemodeling = () => {
                             ))}
                         </ul>
                     </div>
-                    <div className="bg-neutral-200 rounded-2xl h-80 w-full flex items-center justify-center text-neutral-500">
-                        Kitchen Image
+                    <div className="overflow-hidden rounded-2xl h-80 w-full shadow-lg">
+                        <img src={KitchenSection} alt="Kitchen Interior" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
                     </div>
                 </div>
 

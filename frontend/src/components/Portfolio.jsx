@@ -1,15 +1,29 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+// Images with imagetools directives
+import KitchenFarmhouse from '../assets/Kitchen Modern Farmhouse Kitchen.jpeg?w=400;800&format=webp&as=srcset';
+import BathroomLuxury from '../assets/Bathroom Luxury Master Bath.jpeg?w=400;800&format=webp&as=srcset';
+import FlooringHardwood from '../assets/Flooring Hardwood Restoration.jpeg?w=400;800&format=webp&as=srcset';
+import CountertopsQuartz from '../assets/Countertops Quartz Island Installation.jpeg?w=400;800&format=webp&as=srcset';
+import KitchenMinimalist from '../assets/Kitchen Minimalist Chef Kitchen.jpeg?w=400;800&format=webp&as=srcset';
+import BathroomGuest from '../assets/Bathroom Guest Bathroom Remodel.jpeg?w=400;800&format=webp&as=srcset';
+
+// Fallbacks
+import KitchenFarmhouseFallback from '../assets/Kitchen Modern Farmhouse Kitchen.jpeg?w=800&format=jpg';
+import BathroomLuxuryFallback from '../assets/Bathroom Luxury Master Bath.jpeg?w=800&format=jpg';
+import FlooringHardwoodFallback from '../assets/Flooring Hardwood Restoration.jpeg?w=800&format=jpg';
+import CountertopsQuartzFallback from '../assets/Countertops Quartz Island Installation.jpeg?w=800&format=jpg';
+import KitchenMinimalistFallback from '../assets/Kitchen Minimalist Chef Kitchen.jpeg?w=800&format=jpg';
+import BathroomGuestFallback from '../assets/Bathroom Guest Bathroom Remodel.jpeg?w=800&format=jpg';
 
 const Portfolio = () => {
-    // Placeholder data - ideally these would be images we generate later
     const projects = [
-        { id: 1, category: 'Kitchen', title: 'Modern Farmhouse Kitchen', image: 'bg-neutral-200' },
-        { id: 2, category: 'Bathroom', title: 'Luxury Master Bath', image: 'bg-stone-200' },
-        { id: 3, category: 'Flooring', title: 'Hardwood Restoration', image: 'bg-orange-100' },
-        { id: 4, category: 'Countertops', title: 'Quartz Island Installation', image: 'bg-slate-200' },
-        { id: 5, category: 'Kitchen', title: 'Minimalist Chef Kitchen', image: 'bg-neutral-300' },
-        { id: 6, category: 'Bathroom', title: 'Guest Bathroom Remodel', image: 'bg-blue-100' },
+        { id: 1, category: 'Kitchen', title: 'Modern Farmhouse Kitchen', image: KitchenFarmhouse, fallback: KitchenFarmhouseFallback },
+        { id: 2, category: 'Bathroom', title: 'Luxury Master Bath', image: BathroomLuxury, fallback: BathroomLuxuryFallback },
+        { id: 3, category: 'Flooring', title: 'Hardwood Restoration', image: FlooringHardwood, fallback: FlooringHardwoodFallback },
+        { id: 4, category: 'Countertops', title: 'Quartz Island Installation', image: CountertopsQuartz, fallback: CountertopsQuartzFallback },
+        { id: 5, category: 'Kitchen', title: 'Minimalist Chef Kitchen', image: KitchenMinimalist, fallback: KitchenMinimalistFallback },
+        { id: 6, category: 'Bathroom', title: 'Guest Bathroom Remodel', image: BathroomGuest, fallback: BathroomGuestFallback },
     ];
 
     return (
@@ -37,7 +51,13 @@ const Portfolio = () => {
                             transition={{ delay: index * 0.1 }}
                             className="group relative overflow-hidden rounded-xl aspect-[4/3] cursor-pointer"
                         >
-                            <div className={`w-full h-full ${project.image} transition-transform duration-500 group-hover:scale-110`} />
+                            <img
+                                srcSet={project.image}
+                                src={project.fallback}
+                                alt={project.title}
+                                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            />
 
                             {/* Overlay */}
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
