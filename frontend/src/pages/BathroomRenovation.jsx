@@ -2,15 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import BathroomHero from '../assets/bathroom hero.jpeg';
-import BathroomSection from '../assets/bathroom section.jpeg';
+
+// Optimized background image
+import BathroomHeroUrl from '../assets/bathroom hero.jpeg?w=1600&format=webp&q=80';
+// Optimized section images
+import BathroomSectionSrcSet from '../assets/bathroom section.jpeg?w=400;800;1200&format=webp&as=srcset';
+import BathroomSectionFallback from '../assets/bathroom section.jpeg?w=800&format=jpg';
 
 const BathroomRenovation = () => {
     return (
         <div className="pt-20">
             <div
                 className="relative bg-blue-50 py-32 px-6 bg-cover bg-center"
-                style={{ backgroundImage: `linear-gradient(rgba(239,246,255,0.9), rgba(239,246,255,0.8)), url('${BathroomHero}')` }}
+                style={{ backgroundImage: `linear-gradient(rgba(239,246,255,0.9), rgba(239,246,255,0.8)), url('${BathroomHeroUrl}')` }}
             >
                 <div className="container mx-auto max-w-4xl text-center relative z-10">
                     <motion.h1
@@ -43,7 +47,13 @@ const BathroomRenovation = () => {
                         </ul>
                     </div>
                     <div className="overflow-hidden rounded-2xl h-80 w-full shadow-lg">
-                        <img src={BathroomSection} alt="Luxury Bathroom" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        <img
+                            srcSet={BathroomSectionSrcSet}
+                            src={BathroomSectionFallback}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            alt="Luxury Bathroom"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
                     </div>
                 </div>
 

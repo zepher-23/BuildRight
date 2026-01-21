@@ -2,15 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import CountertopHero from '../assets/countertop hero.jpeg';
-import CountertopSection from '../assets/countertop section.jpeg';
+
+// Optimized background image
+import CountertopHeroUrl from '../assets/countertop hero.jpeg?w=1600&format=webp&q=80';
+// Optimized section images
+import CountertopSectionSrcSet from '../assets/countertop section.jpeg?w=400;800;1200&format=webp&as=srcset';
+import CountertopSectionFallback from '../assets/countertop section.jpeg?w=800&format=jpg';
 
 const CountertopInstallation = () => {
     return (
         <div className="pt-20">
             <div
                 className="relative bg-slate-50 py-32 px-6 bg-cover bg-center"
-                style={{ backgroundImage: `linear-gradient(rgba(248,250,252,0.9), rgba(248,250,252,0.8)), url('${CountertopHero}')` }}
+                style={{ backgroundImage: `linear-gradient(rgba(248,250,252,0.9), rgba(248,250,252,0.8)), url('${CountertopHeroUrl}')` }}
             >
                 <div className="container mx-auto max-w-4xl text-center relative z-10">
                     <motion.h1
@@ -43,7 +47,13 @@ const CountertopInstallation = () => {
                         </ul>
                     </div>
                     <div className="overflow-hidden rounded-2xl h-80 w-full shadow-lg">
-                        <img src={CountertopSection} alt="Marble Countertop" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        <img
+                            srcSet={CountertopSectionSrcSet}
+                            src={CountertopSectionFallback}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            alt="Marble Countertop"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
                     </div>
                 </div>
 

@@ -2,15 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import FlooringHero from '../assets/flooring hero.jpeg';
-import FlooringSection from '../assets/flooring section.jpeg';
+
+// Optimized background image
+import FlooringHeroUrl from '../assets/flooring hero.jpeg?w=1600&format=webp&q=80';
+// Optimized section images
+import FlooringSectionSrcSet from '../assets/flooring section.jpeg?w=400;800;1200&format=webp&as=srcset';
+import FlooringSectionFallback from '../assets/flooring section.jpeg?w=800&format=jpg';
 
 const FlooringInstallation = () => {
     return (
         <div className="pt-20">
             <div
                 className="relative bg-stone-50 py-32 px-6 bg-cover bg-center"
-                style={{ backgroundImage: `linear-gradient(rgba(250,250,249,0.9), rgba(250,250,249,0.8)), url('${FlooringHero}')` }}
+                style={{ backgroundImage: `linear-gradient(rgba(250,250,249,0.9), rgba(250,250,249,0.8)), url('${FlooringHeroUrl}')` }}
             >
                 <div className="container mx-auto max-w-4xl text-center relative z-10">
                     <motion.h1
@@ -43,7 +47,13 @@ const FlooringInstallation = () => {
                         </ul>
                     </div>
                     <div className="overflow-hidden rounded-2xl h-80 w-full shadow-lg">
-                        <img src={FlooringSection} alt="Premium Flooring" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        <img
+                            srcSet={FlooringSectionSrcSet}
+                            src={FlooringSectionFallback}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            alt="Premium Flooring"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
                     </div>
                 </div>
 

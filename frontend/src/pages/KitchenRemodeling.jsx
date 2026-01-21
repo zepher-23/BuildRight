@@ -2,15 +2,19 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import KitchenHero from '../assets/kitchen hero.jpeg';
-import KitchenSection from '../assets/kitchen section image.jpeg';
+
+// Optimized background image (WebP, width 1600px)
+import KitchenHeroUrl from '../assets/kitchen hero.jpeg?w=1600&format=webp&q=80';
+// Optimized section images
+import KitchenSectionSrcSet from '../assets/kitchen section image.jpeg?w=400;800;1200&format=webp&as=srcset';
+import KitchenSectionFallback from '../assets/kitchen section image.jpeg?w=800&format=jpg';
 
 const KitchenRemodeling = () => {
     return (
         <div className="pt-20">
             <div
                 className="relative bg-orange-50 py-32 px-6 bg-cover bg-center"
-                style={{ backgroundImage: `linear-gradient(rgba(255,247,237,0.9), rgba(255,247,237,0.8)), url('${KitchenHero}')` }}
+                style={{ backgroundImage: `linear-gradient(rgba(255,247,237,0.9), rgba(255,247,237,0.8)), url('${KitchenHeroUrl}')` }}
             >
                 <div className="container mx-auto max-w-4xl text-center relative z-10">
                     <motion.h1
@@ -43,7 +47,13 @@ const KitchenRemodeling = () => {
                         </ul>
                     </div>
                     <div className="overflow-hidden rounded-2xl h-80 w-full shadow-lg">
-                        <img src={KitchenSection} alt="Kitchen Interior" className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+                        <img
+                            srcSet={KitchenSectionSrcSet}
+                            src={KitchenSectionFallback}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            alt="Kitchen Interior"
+                            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                        />
                     </div>
                 </div>
 
